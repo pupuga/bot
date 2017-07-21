@@ -1,6 +1,5 @@
-# Wrapper Class for WordPress Nonces
+# Custom Bot for WordPress
 
-Table of contents:
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Custom short codes](#shortcodes)
