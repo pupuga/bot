@@ -1,0 +1,111 @@
+@import "_Config";
+@import "_Mixins";
+@import "_Elements";
+
+a, button, input, .pointer, label {
+  -webkit-tap-highlight-color: rgba(0,0,0, 0) !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a,
+label,
+input,
+textarea,
+button,
+option,
+select {
+  outline: none !important;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: $font-family;
+}
+
+input {
+  -webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  cursor: text;
+  @include placeholder(color, grey);
+  @include placeholder(font-weight, 400);
+  @include placeholder(opacity, 0.8);
+  font-family: $font-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+fieldset,
+form,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+  padding: 0;
+  margin: 0;
+  border: none;
+  line-height: 100%;
+  font-style: normal;
+  font-family: $font-family;
+}
+
+img {
+  @include box-inline-block(100%);
+  max-width: 100%;
+  height: auto;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.display-inline-block {
+  display: inline-block !important;
+}
+
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+
+.aligncenter {
+  display: block;
+  margin: 0 auto;
+}
+
+.main-wrapper {
+  min-height: 100vh;
+}
+
+@include media-hide-visible(1024 768 480 320);
+
+
+

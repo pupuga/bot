@@ -1,0 +1,229 @@
+@import "_Config";
+@import "_Mixins";
+@import "_Elements";
+@import "_Default";
+
+.pupuga-bot {
+  @include box-inline-block(100%);
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $font-color;
+  padding: 1em;
+  line-height: 100%;
+  background: $background-color;
+  @include media(480px) {
+    font-size: $font-size * 0.8;
+  }
+  > * {
+    @include box-inline-block(100%);
+  }
+  .about-bot {
+    text-align: center;
+    border: 2px solid $color;
+    padding-bottom: 1em;
+    border-radius: 5px;
+    margin-top: $bot-image-width/2;
+    .name {
+      padding: 0.5em;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+    .info {
+      
+    }
+    .image {
+      @include el-image-round($bot-image-width, 20%, 2px, $color, $bot-image-width);
+      box-shadow: $bot-image-shadow;
+      margin-top: -$bot-image-width/2;
+      background: white;
+    } 
+  }
+
+  $width-image: $message-image-width;
+  $indent-text-message: 20px;
+  .messages-wrapper {
+    margin-top: 1em;
+    overflow-y: auto;
+    height: 45vh;
+  }
+  .messages {
+    @include box-inline-block(100%);
+    .message {
+      @include box-inline-block(100%);
+      clear: both;
+      position: relative;
+      z-index: 1;
+      margin: 0.5em 0;
+      @include media(480px) {
+        overflow: hidden;
+      }
+    }
+    $time: 0.6s;
+    $times: infinite;
+    @keyframes first {
+      0%   {opacity: 0.33;}
+      25%  {opacity: 0.66;}
+      50%  {opacity: 1;}
+      75%  {opacity: 0.66;}
+      100% {opacity: 0.33;}
+    }
+    @keyframes middle {
+      0%   {opacity: 0.66;}
+      25%  {opacity: 1;}
+      50%  {opacity: 0.66;}
+      75%  {opacity: 0.33;}
+      100% {opacity: 0.66;}
+    }
+    @keyframes last {
+      0%   {opacity: 1;}
+      25%  {opacity: 0.66;}
+      50%  {opacity: 0.33;}
+      75%  {opacity: 0.66;}
+      100% {opacity: 1;}
+    }
+    .progress {
+      .dot{
+        $size: 12/14 * 1em;
+        @include box-inline-block($size);
+        height: $size;
+        border-radius: $size;
+        background: white;
+        margin-left: 5px;
+        float: left;
+        animation: middle $time $times;
+        &:first-child {
+          margin-left: 0;
+          animation: first $time $times;
+        }
+        &:last-child {
+          animation: last $time $times;
+        }
+      }
+    };
+    .complete {
+      @include box-inline-block();
+    }
+    .image {
+      $indent: 1em;
+      box-shadow: $message-image-shadow;
+      position: absolute;
+      z-index: 5;
+      bottom: 0;
+      &.message-bot {
+        @include el-image-round($width-image, $width-image, 1px, $message-bot-image-border-color);
+        left: $indent;
+        @include media(480px) {
+          @include el-image-round($width-image, $width-image, 1px, $message-bot-image-border-color);
+          left: 0;
+          max-width: $width-image/1.6;
+        }
+      }
+      &.message-client {
+        @include el-image-round($width-image, $width-image, 1px, $message-client-image-border-color);
+        right: $indent;
+        @include media(480px) {
+          right: 0;
+          max-width: $width-image/1.6;
+        }
+      }
+    }
+    .text-wrapper {
+      @include box-inline-block(100%);
+      min-height: $width-image;
+      padding: 0 $width-image + $indent-text-message;
+      &.message-bot {
+        text-align: left;
+      }
+      &.message-client {
+        text-align: right;
+        
+      }
+      @include media(480px) {
+        min-height: 0;
+        padding: 0 ($width-image + $indent-text-message)/2;
+      }
+    }
+    .text {
+      @include box-inline-block();
+      padding: 1em;
+      border-radius: 10px;
+      line-height: 160%;
+      position: relative;
+      z-index: 1;
+      &.message-bot {
+        @include speaking-text-block($message-bot-background-color, $message-bot-font-color, $background-color, left);
+      }
+      &.message-client {
+        @include speaking-text-block($message-client-background-color, $message-client-font-color, $background-color, right);
+        @include media(480px) {
+          text-align: left !important;
+        }
+      }
+    }
+  }
+  
+  .answers {
+    @include box-inline-block(100%);
+    border-top: 2px solid $color;
+    margin-top: 1em;
+    padding: 1em $width-image + $indent-text-message;
+    @include media(480px){
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .answer {
+      @include box-inline-block(100%);
+      text-align: center;
+      padding: 0.5em 0;
+      position: relative;
+      z-index: 1;
+    }
+    $height: 3.5em;
+    $width: 50%;
+    $indent: 2%;
+    .text {
+      @include box-inline-block($width - $indent);
+      height: $height;
+      margin-right: $indent;
+      padding: 0 $indent + 2% + 3%  0 1em;
+      font-size: 1em;
+      color: black;
+      background: white;
+      border: 2px solid $button-background-color;
+      font-weight: 600;
+      float: left;
+      &.warning {
+        border-color: red;
+      }
+      + .button {
+        width: 100% - $width;  
+      };
+    }
+    .units-wrapper {
+      @include vertical-align-middle();
+      position: absolute;
+      height: $height;
+      font-weight: 600;
+      right: 100% - $width + $indent + 2%;
+      top: 0.5em;
+      text-transform: uppercase;
+    }
+    .button {
+      @include box-inline-block(100%);
+      height: $height;
+      padding: 0 1em;
+      font-size: 1em;
+      color: $button-font-color;
+      background: $button-background-color;
+      border: $button-border;
+      font-weight: 600;
+      text-transform: uppercase;
+      @include vertical-align-middle();
+      .inscription {
+      }
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}

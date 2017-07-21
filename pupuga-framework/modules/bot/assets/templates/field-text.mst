@@ -1,0 +1,7 @@
+<div class="answer">
+    <input type="text" name="value" class="text value {{filter}}" placeholder="{{placeholder}}" data-name="{{name}}">
+    <button type="button" class="button" data-target="{{target}}" data-response="{{response}}">{{inscription}}</button>
+    <div class="units-wrapper">
+        <div class="units">{{units}}</div>
+    </div>
+</div>

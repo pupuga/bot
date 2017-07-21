@@ -1,0 +1,457 @@
+@mixin browsers($property, $parameters) {
+  -webkit-#{$property}: $parameters;
+  -moz-#{$property}: $parameters;
+  -ms-#{$property}: $parameters;
+  #{$property}: $parameters;
+}
+
+@mixin element-hover-custom($border-color, $background-color, $font-color, $hover-border-color, $hover-background-color, $hover-font-color) {
+  border-color: $border-color;
+  background-color: $background-color;
+  color: $font-color;
+  &:hover {
+    border-color: $hover-border-color;
+    background-color: $hover-background-color;
+    color: $hover-font-color;
+  }
+}
+
+@mixin element-hover($border-color, $background-color, $font-color) {
+  $hover-border-color: $border-color;
+  $hover-background-color: $font-color;
+  $hover-font-color: $background-color;
+  @include element-hover-custom($border-color, $background-color, $font-color, $hover-border-color, $hover-background-color, $hover-font-color);
+}
+
+@mixin placeholder($property: none, $parameters: none) {
+  &::-webkit-input-placeholder {
+    #{$property}: $parameters;
+  }
+  &:-moz-placeholder {
+    #{$property}: $parameters;
+  }
+  &::-moz-placeholder {
+    #{$property}: $parameters;
+  }
+  &:-ms-input-placeholder {
+    #{$property}: $parameters;
+  }
+}
+
+@mixin media($width) {
+  @media only screen and (max-width: $width) {
+    @content
+  }
+}
+
+@mixin transition($transition: 0.3s) {
+  transition: $transition;
+  &:hover {
+    transition: $transition;
+  }
+}
+
+@mixin box-display($width: auto, $vertical-align: top, $display: inline-block) {
+  display: $display;
+  vertical-align: $vertical-align;
+  width: $width;
+  box-sizing: border-box;
+}
+
+@mixin box-inline-block($width: auto, $vertical-align: top) {
+  @include box-display($width, $vertical-align);
+}
+
+@mixin box-block($width: auto, $vertical-align: top) {
+  @include box-display($width, $vertical-align, block);
+}
+
+@mixin box-none($width: auto, $vertical-align: top) {
+  @include box-display($width, $vertical-align, none);
+}
+
+@mixin box-with-inline-blocks($number: auto, $vertical-align: top, $box-width: 100%) {
+  @include box-inline-block($box-width);
+  > * {
+    float: left;
+    @if ($number == auto) {
+      @include box-inline-block($number, $vertical-align);
+    } @else {
+      @include box-inline-block(100%/$number, $vertical-align);
+    }
+  }
+}
+
+@mixin box-with-inline-blocks-custom($width-list: 50% 50%, $vertical-align: top, $box-width: 100%) {
+  @include box-inline-block($box-width);
+  > * {
+    float: left;
+    @include box-inline-block(auto, $vertical-align);
+    @each $width in $width-list {
+      $i: index($width-list, $width);
+      &:nth-child(#{$i}) {
+        width: $width;
+      }
+    }
+  }
+}
+
+@mixin vertical-align-middle($width: auto, $pseudo: before) {
+  > * {
+    @include box-inline-block($width, middle);
+  }
+  &:#{$pseudo} {
+    content: "";
+    height: 100%;
+    min-height: inherit;
+    @include box-inline-block(0, middle);
+  }
+}
+
+@mixin grid($width, $grid-number, $padding: 10px, $selector: "ul.products") {
+  #{$selector} {
+    text-align: center;
+    @include box-inline-block($width);
+    @for $i from 1 to $grid-number {
+      @include media($width - (($i - 1)  * $width/$grid-number) - 1px + $padding * 2) {
+        width: ($grid-number - $i) * $width/$grid-number;
+      }
+    ;
+    }
+    @include media(480px) {
+      width: 100%;
+    }
+    > * {
+      @include box-inline-block($width/$grid-number !important);
+      text-align: center;
+      float: left;
+      position: relative;
+      @include media(480px) {
+        float: none;
+      }
+    }
+  }
+}
+
+@mixin page($width, $padding-left-right: 10px) {
+  width: 100%;
+  max-width: $width;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  @include media($width + $padding-left-right * 2) {
+    padding: 0 $padding-left-right;
+  }
+}
+
+@mixin pseudo-image($source, $margin: 0 5px 0 0, $pseudo: before) {
+  &:#{$pseudo} {
+    $url: url($source);
+    @include box-inline-block(auto, middle);
+    width: auto;
+    height: auto;
+    margin: $margin;
+    content: $url;
+    line-height: 0;
+  }
+}
+
+@mixin menu($width: 100%, $font-size: 1rem, $media-menu: 1023px, $color: black) {
+  @include media($media-menu) {
+    @include box-inline-block(100%);
+    overflow: hidden;
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    left: -100%;
+    background: rgba(255,255,255, 0.9);
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    transition: 0.3s;
+    padding: 20px 20px 10px 20px;
+    max-height: 100%;
+    animation-timing-function: ease;
+    &.open {
+      left: 0;
+      transition: 0.3s;
+      animation-timing-function: ease;
+    }
+  }
+  > ul {
+    font-size: 0;
+    @include box-inline-block($width);
+    line-height: 100%;
+    li {
+      @include box-inline-block(auto, middle);
+      font-size: $font-size;
+      line-height: 100%;
+      text-align: left;
+      @include media($media-menu) {
+        @include box-inline-block(100%);
+        padding: 15px 5px !important;
+        border-bottom: 1px solid $color;
+        &:last-child {
+          border-top: none;
+        }
+      }
+      a {
+        @include box-inline-block(auto, middle);
+        font-size: $font-size;
+        line-height: 100%;
+      }
+    }
+    &:last-child {
+      li:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@mixin social($names, $width, $margin, $background: white, $round: true) {
+  font-size: 0;
+  li {
+    @include box-inline-block();
+    @include transition(0.3s);
+    box-sizing: content-box;
+    width: $width;
+    height: $width;
+    margin: 0 $margin;
+    background: $background;
+    @if ($round == true) {
+      border-radius: $width;
+    }
+    @each $name in $names {
+      $url: '"../images/icons/'+$name+'.png"';
+      &.#{$name} a {
+        background: url(#{$url}) 50% 50% no-repeat;
+      }
+    }
+    a {
+      @include box-inline-block();
+      box-sizing: content-box;
+      width: inherit;
+      height: inherit;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+@mixin responsive-button($width, $color, $position:fixed, $horizontal:right, $horizontal-value:10px, $vertical:top, $vertical-value:10px, $border: false, $shadow: false) {
+  #responsive-button-wrapper {
+    display: none;
+    z-index: 10000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    vertical-align: top;
+    width: 100%;
+    @include media($width) {
+      display: inline-block;
+    }
+    #responsive-button {
+      display: inline-block;
+      width: 27px;
+      position: absolute;
+      z-index: 1;
+      right: $horizontal-value;
+      top: $vertical-value;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+      padding: 8px 5px;
+      background: white;
+      @if $border == true {
+        border: 2px solid $color;
+      }
+      @if $shadow == true {
+        @include browsers('box-shadow', 1px 1px 5px 0px rgba(0, 0, 0, 0.4));
+      }
+      @if $border == true or $shadow == true {
+        padding: 9px;
+      }
+      &.open {
+        background: none;
+        .responsive-button-line {
+          opacity: 0;
+          &:first-child {
+            display: inline-block;
+            transform: rotate(45deg);
+            position: relative;
+            margin-top: 9px;
+            transition: 0.3s;
+            opacity: 1;
+          }
+          &:last-child {
+            display: inline-block;
+            transform: rotate(-45deg);
+            position: relative;
+            margin-top: -12px;
+            transition: 0.3s;
+            opacity: 1;
+          }
+        }
+      }
+      .responsive-button-line {
+        @include box-inline-block(100%);
+        height: 3px;
+        background: #485a7e;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.11);
+        margin-top: 6px;
+        transition: 0.3s;
+        float: left;
+        opacity: 1;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+@mixin media-hide-visible($medias) {
+  @each $media in $medias {
+    .hide-#{$media} {
+      @include media($media + px) {
+        display: none !important;
+      }
+    }
+    .visible-#{$media} {
+      @include media(4000px) {
+        display: none !important;
+      }
+      @include media($media + px) {
+        display: inline-block !important;
+      }
+    }
+  }
+}
+
+// window
+@mixin window($background, $width, $padding, $color) {
+  @include box-display(100%, top, none);
+  @include vertical-align-middle();
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000000;
+  text-align: center;
+  .veil {
+    @include box-inline-block(100%);
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    background: $background;
+    opacity: 0.92;
+  }
+  .close {
+    cursor: pointer;
+    &:before {
+      @include box-inline-block();
+      content: "\f00d";
+      font-family: "FontAwesome";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: $color;
+      font-size: 24px;
+    }
+  }
+  .window {
+    @include box-inline-block(94%, middle);
+    height: auto;
+    max-width: $width;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    border-radius: 2px;
+    border: solid 1px rgba(150, 150, 150, 0.34);
+    box-shadow: 0 2px 6px 4px rgba(0, 0, 0, 0.13);
+    background: $background;
+    padding: $padding;
+  }
+}
+
+/* Mixin for plugins */
+
+/* Flex slider begin */
+@mixin flex-slider($width: 0, $left: 0) {
+  position: relative;
+  z-index: 1;
+  ul.slides {
+    @include box-with-inline-blocks();
+    li {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      &:first-child {
+        position: relative;
+        z-index: 2;
+        > a {
+          @include box-with-inline-blocks();
+        }
+      }
+    }
+  }
+  .flex-viewport {
+    ul.slides {
+      @include box-inline-block();
+      li {
+        position: static;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .flex-control-nav {
+    list-style: none;
+    @include box-with-inline-blocks();
+    li {
+      a {
+        @include box-inline-block();
+      }
+    }
+  }
+  .flex-direction-nav {
+    @include box-inline-block(100%);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    list-style: none;
+    li {
+      @include box-inline-block(auto);
+      position: absolute;
+      z-index: 1;
+      top: -($width/2);
+      a {
+        @include box-inline-block(100%);
+        font-size: 0;
+        width: $width;
+        height: $width;
+      }
+      &:first-child {
+        left: $left;
+        a {
+          background: url("../images/icons/button-left.png");
+        }
+      }
+      &:last-child {
+        right: $left;
+        a {
+          background: url("../images/icons/button-right.png");
+          @include browsers(transform, rotate(180deg));
+        }
+      }
+    }
+  }
+}
+/* Flex slider end */

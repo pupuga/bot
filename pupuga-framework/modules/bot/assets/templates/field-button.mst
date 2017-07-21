@@ -1,0 +1,3 @@
+<div class="answer">
+    <button type="button" class="button value" data-target="{{target}}" data-response="{{response}}">{{inscription}}</button>
+</div>

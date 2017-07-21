@@ -1,0 +1,83 @@
+@import "_Mixins";
+@import "_Elements";
+
+$color: #499dfc;
+$font-family: Verdana, Arial, Helvetica, sans-serif;
+$font-size: 14px;
+$font-color: black;
+$background-color: white;
+$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+
+/* bot config */
+$bot-image-width: 120/14 * 1em;
+$bot-image-shadow: $box-shadow;
+$bot-background-color: $color;
+$bot-font-color: white;
+
+/* messages */
+$message-image-width: 50px;
+$message-image-shadow: $box-shadow;
+
+/* messages bot */
+$message-bot-color: lighten($color, 3%);
+$message-bot-image-border-color: $message-bot-color;
+$message-bot-background-color: $color;
+$message-bot-font-color: white;
+
+/* messages client */
+$message-client-color: #e6e6eb;
+$message-client-image-border-color: $message-client-color;
+$message-client-background-color: $message-client-color;
+$message-client-font-color: black;
+/* messages --- */
+
+
+/* answers */
+$button-font-color: white;
+$button-background-color: #27ba39;
+$button-border: none;
+/* answers end */
+
+
+@mixin speaking-text-block($background-color, $font-color, $parent-background-color: white, $location: left) {
+  background: $background-color;
+  color: $font-color;
+  &:before {
+    content: '';
+    @include box-inline-block(40px);
+    height: 30px;
+    position: absolute;
+    z-index: 1;
+
+    background: $background-color;
+    @if ($location == left) {
+      left: -30px;
+      border-radius: 30px 200px 30px 30px;
+    } @else {
+      right: -30px;
+      border-radius: 200px 30px 30px 30px;
+    }
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    @include box-inline-block(40px);
+    height: 40px;
+    position: absolute;
+    z-index: 2;
+
+    background: $parent-background-color;
+    @if ($location == left) {
+      left: -40px;
+      border-radius: 30px 0 12px 0;
+    } @else {
+      right: -40px;
+      border-radius: 0 30px 0 12px;
+    }
+    bottom: 0;
+  } 
+}
+
+
+
+

@@ -1,0 +1,6 @@
+<div class="message message-client">
+    <div class="text-wrapper message-client">
+        <div class="complete text message-client">{{{client.message}}}</div>
+    </div>
+    <div class="image message-client"><img src="{{clientConfiguration.clientImage}}"></div>
+</div>

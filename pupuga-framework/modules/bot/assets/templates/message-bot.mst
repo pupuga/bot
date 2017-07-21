@@ -1,0 +1,11 @@
+{{#message}}
+<div class="message message-bot display-none">
+    <div class="image message-bot"><img src="{{botConfiguration.botImage}}"></div>
+    <div class="text-wrapper message-bot">
+        <div class="text message-bot">
+            <div class="progress message-bot"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="complete message-bot display-none">{{{.}}}</div>
+        </div>
+    </div>
+</div>
+{{/message}}

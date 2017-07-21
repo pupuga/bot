@@ -1,0 +1,580 @@
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+/* bot config */
+/* messages */
+/* messages bot */
+/* messages client */
+/* messages --- */
+/* answers */
+/* answers end */
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+/* bot config */
+/* messages */
+/* messages bot */
+/* messages client */
+/* messages --- */
+/* answers */
+/* answers end */
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+/* Mixin for plugins */
+/* Flex slider begin */
+/* Flex slider end */
+a, button, input, .pointer, label {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+a,
+label,
+input,
+textarea,
+button,
+option,
+select {
+  outline: none !important;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: Verdana, Arial, Helvetica, sans-serif; }
+
+input {
+  -webkit-appearance: none; }
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  cursor: text;
+  font-family: Verdana, Arial, Helvetica, sans-serif; }
+  input[type="text"]::-webkit-input-placeholder,
+  input[type="password"]::-webkit-input-placeholder,
+  input[type="email"]::-webkit-input-placeholder,
+  input[type="tel"]::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    color: grey; }
+  input[type="text"]:-moz-placeholder,
+  input[type="password"]:-moz-placeholder,
+  input[type="email"]:-moz-placeholder,
+  input[type="tel"]:-moz-placeholder,
+  textarea:-moz-placeholder {
+    color: grey; }
+  input[type="text"]::-moz-placeholder,
+  input[type="password"]::-moz-placeholder,
+  input[type="email"]::-moz-placeholder,
+  input[type="tel"]::-moz-placeholder,
+  textarea::-moz-placeholder {
+    color: grey; }
+  input[type="text"]:-ms-input-placeholder,
+  input[type="password"]:-ms-input-placeholder,
+  input[type="email"]:-ms-input-placeholder,
+  input[type="tel"]:-ms-input-placeholder,
+  textarea:-ms-input-placeholder {
+    color: grey; }
+  input[type="text"]::-webkit-input-placeholder,
+  input[type="password"]::-webkit-input-placeholder,
+  input[type="email"]::-webkit-input-placeholder,
+  input[type="tel"]::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    font-weight: 400; }
+  input[type="text"]:-moz-placeholder,
+  input[type="password"]:-moz-placeholder,
+  input[type="email"]:-moz-placeholder,
+  input[type="tel"]:-moz-placeholder,
+  textarea:-moz-placeholder {
+    font-weight: 400; }
+  input[type="text"]::-moz-placeholder,
+  input[type="password"]::-moz-placeholder,
+  input[type="email"]::-moz-placeholder,
+  input[type="tel"]::-moz-placeholder,
+  textarea::-moz-placeholder {
+    font-weight: 400; }
+  input[type="text"]:-ms-input-placeholder,
+  input[type="password"]:-ms-input-placeholder,
+  input[type="email"]:-ms-input-placeholder,
+  input[type="tel"]:-ms-input-placeholder,
+  textarea:-ms-input-placeholder {
+    font-weight: 400; }
+  input[type="text"]::-webkit-input-placeholder,
+  input[type="password"]::-webkit-input-placeholder,
+  input[type="email"]::-webkit-input-placeholder,
+  input[type="tel"]::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    opacity: 0.8; }
+  input[type="text"]:-moz-placeholder,
+  input[type="password"]:-moz-placeholder,
+  input[type="email"]:-moz-placeholder,
+  input[type="tel"]:-moz-placeholder,
+  textarea:-moz-placeholder {
+    opacity: 0.8; }
+  input[type="text"]::-moz-placeholder,
+  input[type="password"]::-moz-placeholder,
+  input[type="email"]::-moz-placeholder,
+  input[type="tel"]::-moz-placeholder,
+  textarea::-moz-placeholder {
+    opacity: 0.8; }
+  input[type="text"]:-ms-input-placeholder,
+  input[type="password"]:-ms-input-placeholder,
+  input[type="email"]:-ms-input-placeholder,
+  input[type="tel"]:-ms-input-placeholder,
+  textarea:-ms-input-placeholder {
+    opacity: 0.8; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+fieldset,
+form,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+  padding: 0;
+  margin: 0;
+  border: none;
+  line-height: 100%;
+  font-style: normal;
+  font-family: Verdana, Arial, Helvetica, sans-serif; }
+
+img {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: auto;
+  border: none;
+  margin: 0;
+  padding: 0; }
+
+.pointer {
+  cursor: pointer; }
+
+.display-none {
+  display: none !important; }
+
+.display-block {
+  display: block !important; }
+
+.display-inline-block {
+  display: inline-block !important; }
+
+.alignleft {
+  float: left; }
+
+.alignright {
+  float: right; }
+
+.aligncenter {
+  display: block;
+  margin: 0 auto; }
+
+.main-wrapper {
+  min-height: 100vh; }
+
+@media only screen and (max-width: 1024px) {
+  .hide-1024 {
+    display: none !important; } }
+
+@media only screen and (max-width: 4000px) {
+  .visible-1024 {
+    display: none !important; } }
+@media only screen and (max-width: 1024px) {
+  .visible-1024 {
+    display: inline-block !important; } }
+
+@media only screen and (max-width: 768px) {
+  .hide-768 {
+    display: none !important; } }
+
+@media only screen and (max-width: 4000px) {
+  .visible-768 {
+    display: none !important; } }
+@media only screen and (max-width: 768px) {
+  .visible-768 {
+    display: inline-block !important; } }
+
+@media only screen and (max-width: 480px) {
+  .hide-480 {
+    display: none !important; } }
+
+@media only screen and (max-width: 4000px) {
+  .visible-480 {
+    display: none !important; } }
+@media only screen and (max-width: 480px) {
+  .visible-480 {
+    display: inline-block !important; } }
+
+@media only screen and (max-width: 320px) {
+  .hide-320 {
+    display: none !important; } }
+
+@media only screen and (max-width: 4000px) {
+  .visible-320 {
+    display: none !important; } }
+@media only screen and (max-width: 320px) {
+  .visible-320 {
+    display: inline-block !important; } }
+
+.pupuga-bot {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: black;
+  padding: 1em;
+  line-height: 100%;
+  background: white; }
+  @media only screen and (max-width: 480px) {
+    .pupuga-bot {
+      font-size: 11.2px; } }
+  .pupuga-bot > * {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    box-sizing: border-box; }
+  .pupuga-bot .about-bot {
+    text-align: center;
+    border: 2px solid #499dfc;
+    padding-bottom: 1em;
+    border-radius: 5px;
+    margin-top: 4.28571em; }
+    .pupuga-bot .about-bot .name {
+      padding: 0.5em;
+      font-size: 1.2em;
+      font-weight: 600; }
+    .pupuga-bot .about-bot .image {
+      display: inline-block;
+      vertical-align: top;
+      width: 8.57143em;
+      box-sizing: border-box;
+      max-width: 8.57143em;
+      height: 8.57143em;
+      border-radius: 8.57143em;
+      border: 2px solid #499dfc;
+      overflow: hidden;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      margin-top: -4.28571em;
+      background: white; }
+  .pupuga-bot .messages-wrapper {
+    margin-top: 1em;
+    overflow-y: auto;
+    height: 45vh; }
+  .pupuga-bot .messages {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    box-sizing: border-box; }
+    .pupuga-bot .messages .message {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      box-sizing: border-box;
+      clear: both;
+      position: relative;
+      z-index: 1;
+      margin: 0.5em 0; }
+      @media only screen and (max-width: 480px) {
+        .pupuga-bot .messages .message {
+          overflow: hidden; } }
+@keyframes first {
+  0% {
+    opacity: 0.33; }
+  25% {
+    opacity: 0.66; }
+  50% {
+    opacity: 1; }
+  75% {
+    opacity: 0.66; }
+  100% {
+    opacity: 0.33; } }
+@keyframes middle {
+  0% {
+    opacity: 0.66; }
+  25% {
+    opacity: 1; }
+  50% {
+    opacity: 0.66; }
+  75% {
+    opacity: 0.33; }
+  100% {
+    opacity: 0.66; } }
+@keyframes last {
+  0% {
+    opacity: 1; }
+  25% {
+    opacity: 0.66; }
+  50% {
+    opacity: 0.33; }
+  75% {
+    opacity: 0.66; }
+  100% {
+    opacity: 1; } }
+    .pupuga-bot .messages .progress .dot {
+      display: inline-block;
+      vertical-align: top;
+      width: 0.85714em;
+      box-sizing: border-box;
+      height: 0.85714em;
+      border-radius: 0.85714em;
+      background: white;
+      margin-left: 5px;
+      float: left;
+      animation: middle 0.6s infinite; }
+      .pupuga-bot .messages .progress .dot:first-child {
+        margin-left: 0;
+        animation: first 0.6s infinite; }
+      .pupuga-bot .messages .progress .dot:last-child {
+        animation: last 0.6s infinite; }
+    .pupuga-bot .messages .complete {
+      display: inline-block;
+      vertical-align: top;
+      width: auto;
+      box-sizing: border-box; }
+    .pupuga-bot .messages .image {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      position: absolute;
+      z-index: 5;
+      bottom: 0; }
+      .pupuga-bot .messages .image.message-bot {
+        display: inline-block;
+        vertical-align: top;
+        width: 50px;
+        box-sizing: border-box;
+        max-width: 50px;
+        height: auto;
+        border-radius: 50px;
+        border: 1px solid #58a5fc;
+        overflow: hidden;
+        left: 1em; }
+        @media only screen and (max-width: 480px) {
+          .pupuga-bot .messages .image.message-bot {
+            display: inline-block;
+            vertical-align: top;
+            width: 50px;
+            box-sizing: border-box;
+            max-width: 50px;
+            height: auto;
+            border-radius: 50px;
+            border: 1px solid #58a5fc;
+            overflow: hidden;
+            left: 0;
+            max-width: 31.25px; } }
+      .pupuga-bot .messages .image.message-client {
+        display: inline-block;
+        vertical-align: top;
+        width: 50px;
+        box-sizing: border-box;
+        max-width: 50px;
+        height: auto;
+        border-radius: 50px;
+        border: 1px solid #e6e6eb;
+        overflow: hidden;
+        right: 1em; }
+        @media only screen and (max-width: 480px) {
+          .pupuga-bot .messages .image.message-client {
+            right: 0;
+            max-width: 31.25px; } }
+    .pupuga-bot .messages .text-wrapper {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 50px;
+      padding: 0 70px; }
+      .pupuga-bot .messages .text-wrapper.message-bot {
+        text-align: left; }
+      .pupuga-bot .messages .text-wrapper.message-client {
+        text-align: right; }
+      @media only screen and (max-width: 480px) {
+        .pupuga-bot .messages .text-wrapper {
+          min-height: 0;
+          padding: 0 35px; } }
+    .pupuga-bot .messages .text {
+      display: inline-block;
+      vertical-align: top;
+      width: auto;
+      box-sizing: border-box;
+      padding: 1em;
+      border-radius: 10px;
+      line-height: 160%;
+      position: relative;
+      z-index: 1; }
+      .pupuga-bot .messages .text.message-bot {
+        background: #499dfc;
+        color: white; }
+        .pupuga-bot .messages .text.message-bot:before {
+          content: '';
+          display: inline-block;
+          vertical-align: top;
+          width: 40px;
+          box-sizing: border-box;
+          height: 30px;
+          position: absolute;
+          z-index: 1;
+          background: #499dfc;
+          left: -30px;
+          border-radius: 30px 200px 30px 30px;
+          bottom: 0; }
+        .pupuga-bot .messages .text.message-bot:after {
+          content: '';
+          display: inline-block;
+          vertical-align: top;
+          width: 40px;
+          box-sizing: border-box;
+          height: 40px;
+          position: absolute;
+          z-index: 2;
+          background: white;
+          left: -40px;
+          border-radius: 30px 0 12px 0;
+          bottom: 0; }
+      .pupuga-bot .messages .text.message-client {
+        background: #e6e6eb;
+        color: black; }
+        .pupuga-bot .messages .text.message-client:before {
+          content: '';
+          display: inline-block;
+          vertical-align: top;
+          width: 40px;
+          box-sizing: border-box;
+          height: 30px;
+          position: absolute;
+          z-index: 1;
+          background: #e6e6eb;
+          right: -30px;
+          border-radius: 200px 30px 30px 30px;
+          bottom: 0; }
+        .pupuga-bot .messages .text.message-client:after {
+          content: '';
+          display: inline-block;
+          vertical-align: top;
+          width: 40px;
+          box-sizing: border-box;
+          height: 40px;
+          position: absolute;
+          z-index: 2;
+          background: white;
+          right: -40px;
+          border-radius: 0 30px 0 12px;
+          bottom: 0; }
+        @media only screen and (max-width: 480px) {
+          .pupuga-bot .messages .text.message-client {
+            text-align: left !important; } }
+  .pupuga-bot .answers {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 2px solid #499dfc;
+    margin-top: 1em;
+    padding: 1em 70px; }
+    @media only screen and (max-width: 480px) {
+      .pupuga-bot .answers {
+        padding-left: 0;
+        padding-right: 0; } }
+    .pupuga-bot .answers .answer {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 0.5em 0;
+      position: relative;
+      z-index: 1; }
+    .pupuga-bot .answers .text {
+      display: inline-block;
+      vertical-align: top;
+      width: 48%;
+      box-sizing: border-box;
+      height: 3.5em;
+      margin-right: 2%;
+      padding: 0 7% 0 1em;
+      font-size: 1em;
+      color: black;
+      background: white;
+      border: 2px solid #27ba39;
+      font-weight: 600;
+      float: left; }
+      .pupuga-bot .answers .text.warning {
+        border-color: red; }
+      .pupuga-bot .answers .text + .button {
+        width: 50%; }
+    .pupuga-bot .answers .units-wrapper {
+      position: absolute;
+      height: 3.5em;
+      font-weight: 600;
+      right: 54%;
+      top: 0.5em;
+      text-transform: uppercase; }
+      .pupuga-bot .answers .units-wrapper > * {
+        display: inline-block;
+        vertical-align: middle;
+        width: auto;
+        box-sizing: border-box; }
+      .pupuga-bot .answers .units-wrapper:before {
+        content: "";
+        height: 100%;
+        min-height: inherit;
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        box-sizing: border-box; }
+    .pupuga-bot .answers .button {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      box-sizing: border-box;
+      height: 3.5em;
+      padding: 0 1em;
+      font-size: 1em;
+      color: white;
+      background: #27ba39;
+      border: none;
+      font-weight: 600;
+      text-transform: uppercase; }
+      .pupuga-bot .answers .button > * {
+        display: inline-block;
+        vertical-align: middle;
+        width: auto;
+        box-sizing: border-box; }
+      .pupuga-bot .answers .button:before {
+        content: "";
+        height: 100%;
+        min-height: inherit;
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        box-sizing: border-box; }
+      .pupuga-bot .answers .button:hover {
+        opacity: 0.9; }
+
+/*# sourceMappingURL=common.css.map */

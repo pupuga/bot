@@ -1,0 +1,3 @@
+<div class="answer">
+    <a class="button" href="{{target}}" target="_blank"><span class="inscription">{{inscription}}</span></a>
+</div>
