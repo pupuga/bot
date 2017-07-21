@@ -10,7 +10,7 @@ Table of contents:
 * Carbon fields >= 1.6
 
 ## Installation
-* You must put this code into *function.php*
+* Put files into theme directory. You must put this code into *function.php*
 ```php
 require_once __DIR__. '/pupuga-framework/modules/InitModules.php';
 ```
