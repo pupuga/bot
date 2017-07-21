@@ -25,7 +25,7 @@ function test($values)
 }
 ```
 
-## Multi language
+## Multi language 
 * You must put this code into *function.php* first. Where **$lang** is current lang
 ```php
 function useBotLang() {
