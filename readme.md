@@ -2,8 +2,8 @@
 
 * [Requirements](#requirements)
 * [Installation](#installation)
-* [Custom short codes](#shortcodes)
-* [Multi lang](#multilang)
+* [Custom short codes](#custom-short-codes)
+* [Multi lang](#multi-lang)
 
 ## Requirements
 * Carbon fields >= 1.6
