@@ -3,7 +3,7 @@
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Custom short codes](#shortcodes)
-* [Multi language](#multilanguage)
+* [Multi lang](#multilanguage)
 
 ## Requirements
 * Carbon fields >= 1.6
@@ -25,7 +25,7 @@ function test($values)
 }
 ```
 
-## Multi language 
+## Multi lang 
 * You must put this code into *function.php* first. Where **$lang** is current lang
 ```php
 function useBotLang() {
