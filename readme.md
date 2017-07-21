@@ -28,7 +28,8 @@ function test($values)
 ## Multi lang 
 * You must put this code into *function.php* first. Where **$lang** is current lang
 ```php
-function useBotLang() {
+function useBotLang() 
+{
     return $lang;
 }
 ```
