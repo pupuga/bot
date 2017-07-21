@@ -18,7 +18,6 @@ class ShortCode {
 			$class = get_called_class();
 			self::$instance = new $class();
 		}
-
 		return self::$instance;
 	}
 	
