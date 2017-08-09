@@ -6,7 +6,7 @@
 * [Multi lang](#multi-  lang)
 
 ## Requirements
-* Carbon fields >= 1.6
+* Carbon fields >= 1.6 (2.0)
 
 ## Installation
 * Put files into theme directory. You must put this code into *function.php*
@@ -15,13 +15,13 @@ require_once __DIR__. '/pupuga-framework/modules/InitModules.php';
 ```
 
 ## Custom short codes
-* If you want to use **short codes**, you must put this code into *function.php*
-And create method into ShortCode class. This method gets function in inserting code
+* If you want to use **short codes**, you must create method into *UseContent.php*
+This method must have name like getNameShortCode
 ```php
 
-function test($values) 
+function getTest($values) 
 {
-    return 'This is test short code function!!!!!' . $values[0]->value;
+    return 'This is test short code function!!!!!';
 }
 ```
 
