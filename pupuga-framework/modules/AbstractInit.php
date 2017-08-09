@@ -54,10 +54,8 @@ abstract class AbstractInit
 	protected function requireClasses()
 	{
 		foreach ($this->classes as $class) {
-
 			$file = $this->dataModule['moduleControllerPath'] . ucfirst( $class ) . '.php';
 			require_once $file;
-
 		}
 
 		return $this;

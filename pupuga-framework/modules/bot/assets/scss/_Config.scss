@@ -1,18 +1,18 @@
 @import "_Mixins";
 @import "_Elements";
 
-$color: #499dfc;
+$color: #0091ed;
 $font-family: Verdana, Arial, Helvetica, sans-serif;
 $font-size: 14px;
 $font-color: black;
-$background-color: white;
+$background-color: transparent;
 $box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 
 /* bot config */
-$bot-image-width: 120/14 * 1em;
+$bot-image-width: 100/14 * 1em;
 $bot-image-shadow: $box-shadow;
 $bot-background-color: $color;
-$bot-font-color: white;
+$bot-font-color: black;
 
 /* messages */
 $message-image-width: 50px;
@@ -20,21 +20,21 @@ $message-image-shadow: $box-shadow;
 
 /* messages bot */
 $message-bot-color: lighten($color, 3%);
-$message-bot-image-border-color: $message-bot-color;
-$message-bot-background-color: $color;
-$message-bot-font-color: white;
+$message-bot-image-border-color: transparent;
+$message-bot-background-color: #f1f1f1;
+$message-bot-font-color: #494949;
 
 /* messages client */
-$message-client-color: #e6e6eb;
-$message-client-image-border-color: $message-client-color;
+$message-client-color: #0091ed;
+$message-client-image-border-color: transparent;
 $message-client-background-color: $message-client-color;
-$message-client-font-color: black;
+$message-client-font-color: white;
 /* messages --- */
 
 
 /* answers */
 $button-font-color: white;
-$button-background-color: #27ba39;
+$button-background-color: #0091ed;
 $button-border: none;
 /* answers end */
 
@@ -43,6 +43,7 @@ $button-border: none;
   background: $background-color;
   color: $font-color;
   &:before {
+    display: none !important;
     content: '';
     @include box-inline-block(40px);
     height: 30px;
@@ -60,6 +61,7 @@ $button-border: none;
     bottom: 0;
   }
   &:after {
+    display: none !important;
     content: '';
     @include box-inline-block(40px);
     height: 40px;

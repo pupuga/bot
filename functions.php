@@ -12,8 +12,4 @@ function useBotLang() {
 
 require_once __DIR__. '/pupuga-framework/modules/InitModules.php';
 
-function test($values) {
-	return 'This is test short code function!!!!!' . $values[0]->value;
-}
-
 ?>

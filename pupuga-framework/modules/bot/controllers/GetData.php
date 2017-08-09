@@ -9,9 +9,6 @@ class GetData extends AbstractGetData
     
 	function __construct() {
 		parent::__construct();
-		$this->replaceFunctions = array(
-			'[formula]' => 'getFormula'
-		);
 	}
 
 	protected function setImageAvatar($name)

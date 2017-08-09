@@ -1,6 +1,6 @@
 <div class="answer">
-    <input type="text" name="value" class="text value {{filter}}" placeholder="{{placeholder}}" data-name="{{name}}">
-    <button type="button" class="button" data-target="{{target}}" data-response="{{response}}">{{inscription}}</button>
+    <input type="text" name="value" autocomplete="off" class="text value {{filter.type}}" placeholder="{{placeholder}}" data-filter-max="{{filter.value}}" data-name="{{name}}">
+    <button type="button" class="button" data-target="{{target}}" data-conditional-min-target="{{conditional-min.target}}" data-conditional-min-value="{{conditional-min.value}}" data-response="{{response}}" data-index="{{index}}">{{inscription}}</button>
     <div class="units-wrapper">
         <div class="units">{{units}}</div>
     </div>

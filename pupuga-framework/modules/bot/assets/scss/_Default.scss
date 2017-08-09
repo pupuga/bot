@@ -65,7 +65,7 @@ dd {
 }
 
 img {
-  @include box-inline-block(100%);
+  @include box-inline-block(auto);
   max-width: 100%;
   height: auto;
   border: none;

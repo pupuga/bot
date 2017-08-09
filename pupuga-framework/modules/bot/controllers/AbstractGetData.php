@@ -36,7 +36,7 @@ abstract class AbstractGetData
 	public $dataBlock;
 	public $config = array();
 	private static $instance;
-	protected $replaceFunctions = array();
+	public $replaceFunctions = array();
     public $language;
 	
 	function __construct() 
@@ -46,6 +46,8 @@ abstract class AbstractGetData
             $this->language = trim($_POST['langCurrent']);
         }
 		$this->getData();
+
+        $this->replaceFunctions = ShortCode::app()->getMethods();
 	}
 	
 	/**
@@ -100,10 +102,11 @@ abstract class AbstractGetData
 		}
 		
 		$replaceData = array (
-			'[value]' =>  trim($_POST['value']),
-			'[units]' => trim($_POST['units']),
-			'[' => '<',
-			']' => '>',
+/*            '[and]' => '&',
+			'[value]' => trim($_POST['value']),
+			'[units]' => trim($_POST['units']),*/
+			'{' => '<',
+			'}' => '>',
 		);
 		
 		foreach ($replaceData as $key => $value) {
@@ -113,18 +116,25 @@ abstract class AbstractGetData
 		
 		foreach ($this->dataBlock['message'] as $key => $value) {
 			foreach ($this->replaceFunctions as $shortCode => $replaceFunction) {
-				if (strrpos($value, $shortCode) !== false && method_exists(ShortCode::app(), $replaceFunction)) {
+				if (strrpos($value, $shortCode) !== false) {
 					$value = str_replace($shortCode, ShortCode::app()->$replaceFunction(), $value);
 				}
 			}
 			$value = str_replace($search, $replace, $value);
 			$this->dataBlock['message'][$key] = $value;
 		}
-		
-		foreach ($this->dataBlock['answer'] as $key => $value) {
-			$value = str_replace($search, $replace, $this->dataBlock['answer'][$key]->inscription);
-			$this->dataBlock['answer'][$key]->inscription = $value;
-		};
+
+        foreach ($this->dataBlock['answer'] as $key => $value) {
+            foreach ($this->replaceFunctions as $shortCode => $replaceFunction) {
+                if (strrpos($this->dataBlock['answer'][$key]->inscription, $shortCode) !== false) {
+                    $value->inscription = str_replace($shortCode, ShortCode::app()->$replaceFunction(), $value->inscription);
+                }
+            }
+            $valueNew = str_replace($search, $replace, $value->inscription);
+            $this->dataBlock['answer'][$key]->inscription = $valueNew;
+            $valueNew = str_replace($search, $replace, $value->target);
+            $this->dataBlock['answer'][$key]->target = $valueNew;
+        }
 				
 		return $this;
 	}

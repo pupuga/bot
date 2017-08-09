@@ -1,5 +1,4 @@
-;
-var pupugaBot = {
+;var pupugaBot = {
     
     botSelector: '.pupuga-bot',
     botTimerMessageInterval: 1500,
@@ -84,8 +83,27 @@ var pupugaBot = {
                 /**
                  *  get new message
                  */
-                var objectAnswerParent = objectAnswer.parent();
-                self.getBlock(objectAnswer.data('target'), objectAnswerParent.find('[name="value"]').val(),  objectAnswerParent.find('.units').text(), objectAnswerParent.find('input.text').data('name'));
+                var objectAnswerParent = objectAnswer.parent(),
+                    index = (objectAnswerParent.find('.button').data('index') !== undefined) 
+                        ? objectAnswerParent.find('.button').data('index')
+                        : '';
+                /**
+                 * condition 
+                 */
+                var target = objectAnswer.data('target'),
+                    value = objectAnswerParent.find('[name="value"]').val();
+                if (objectAnswer.data('conditional-min-target') !== undefined && objectAnswer.data('conditional-min-target') !== '' && 
+                    objectAnswer.data('conditional-min-value') !== undefined && objectAnswer.data('conditional-min-value') !== '' &&
+                    objectAnswer.data('conditional-min-value') > value) {
+                    target = objectAnswer.data('conditional-min-target');
+                }
+                self.getBlock (
+                    target, 
+                    value,  
+                    objectAnswerParent.find('.units').text(), 
+                    objectAnswerParent.find('input.text').data('name'), 
+                    index
+                );
             });   
         }
         
@@ -96,6 +114,9 @@ var pupugaBot = {
         
         jQuery(this.botSelector + ' .answer .number').off('input').on('input', function () {
             jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
+            if (jQuery(this).val() > jQuery(this).data('filter-max')) {
+                jQuery(this).val(jQuery(this).val().replace(/[^.]/, ''));
+            }
         });
         
         jQuery(this.botSelector + ' .answer .button').off('click').on('click', function () {
@@ -125,7 +146,7 @@ var pupugaBot = {
         });
     },
     
-    getBlock: function(target, value, units, name) {
+    getBlock: function(target, value, units, name, index) {
         var self = this;
         jQuery.ajax({
             url: $ajax.url,
@@ -137,7 +158,8 @@ var pupugaBot = {
                 value: value,
                 name: name,
                 units: units,
-                language: langCurrent
+                language: langCurrent,
+                index: index
             },
             success: function (dataBlock) {
                 if (dataBlock !== '') {
@@ -186,7 +208,7 @@ var pupugaBot = {
                     );
                     messagesLength = messagesLength - 1;
                     /**
-                     *  public block answers
+                     * public block answers
                      **/
                     if (messagesLength === 0) {
                         setTimeout(

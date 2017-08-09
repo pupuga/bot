@@ -4,13 +4,17 @@
 @import "_Default";
 
 .pupuga-bot {
-  @include box-inline-block(100%);
+  @include box-block(100%);
+  max-width: 598px;
   font-family: $font-family;
   font-size: $font-size;
   color: $font-color;
-  padding: 1em;
+  padding: 0;
   line-height: 100%;
+  margin: 0 auto;
   background: $background-color;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 0.7em;
   @include media(480px) {
     font-size: $font-size * 0.8;
   }
@@ -20,20 +24,27 @@
   .about-bot {
     text-align: center;
     border: 2px solid $color;
-    padding-bottom: 1em;
-    border-radius: 5px;
+    background: $color;
+    padding-bottom: 2em;
     margin-top: $bot-image-width/2;
+    border-radius: 0.7em 0.7em 0 0;
     .name {
       padding: 0.5em;
-      font-size: 1.2em;
+      font-size: 1.4em;
       font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      letter-spacing: .6px;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.09);
     }
     .info {
-      
+      font-size: 1em;
+      font-weight: 500;
+      color: #bfd9f7;
     }
     .image {
-      @include el-image-round($bot-image-width, 20%, 2px, $color, $bot-image-width);
-      box-shadow: $bot-image-shadow;
+      @include el-image-round($bot-image-width, 20%, 5px, $color, $bot-image-width);
+      box-shadow: none;
       margin-top: -$bot-image-width/2;
       background: white;
     } 
@@ -42,9 +53,12 @@
   $width-image: $message-image-width;
   $indent-text-message: 20px;
   .messages-wrapper {
-    margin-top: 1em;
+    margin-top: 0;
     overflow-y: auto;
-    height: 45vh;
+    height: 55vh;
+    background: white;
+    padding: 1em 0;
+    border-top: 1px solid #e2e2e2;
   }
   .messages {
     @include box-inline-block(100%);
@@ -164,9 +178,11 @@
   
   .answers {
     @include box-inline-block(100%);
-    border-top: 2px solid $color;
-    margin-top: 1em;
-    padding: 1em $width-image + $indent-text-message;
+    border-top: 1px solid #e2e2e2;
+    margin-top: 0;
+    padding: 1em $width-image + $indent-text-message 2em;
+    background: white;
+    border-radius: 0 0 0.7em 0.7em;
     @include media(480px){
       padding-left: 0;
       padding-right: 0;
@@ -178,35 +194,48 @@
       position: relative;
       z-index: 1;
     }
-    $height: 3.5em;
-    $width: 50%;
-    $indent: 2%;
+    $width: 70%;
+    $indent: 0;
+    $height: 2.8em;
+    $font-size: 24/14 * 1em;
+    $border-radius: 10/24 * 1em;
     .text {
       @include box-inline-block($width - $indent);
+      font-size: $font-size;
       height: $height;
-      margin-right: $indent;
+      margin-right: 0;
       padding: 0 $indent + 2% + 3%  0 1em;
-      font-size: 1em;
-      color: black;
+      color: $color;
       background: white;
-      border: 2px solid $button-background-color;
+      border: 1px solid $button-background-color;
       font-weight: 600;
       float: left;
+      border-radius: $border-radius 0 0 $border-radius;
+      text-transform: uppercase;
+      text-align: center;
       &.warning {
         border-color: red;
       }
       + .button {
-        width: 100% - $width;  
+        font-size: $font-size;
+        height: $height;
+        width: 100% - $width;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.02), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        border-radius: 0 $border-radius $border-radius 0;
       };
     }
+    $height: 3.5em;
     .units-wrapper {
       @include vertical-align-middle();
       position: absolute;
       height: $height;
       font-weight: 600;
-      right: 100% - $width + $indent + 2%;
-      top: 0.5em;
-      text-transform: uppercase;
+      right: 100% - $width + $indent + 5%;
+      top: 1.3em;
+    }
+    .units {
+      color: $color;
+      font-size: 1.2em;
     }
     .button {
       @include box-inline-block(100%);
@@ -216,13 +245,85 @@
       color: $button-font-color;
       background: $button-background-color;
       border: $button-border;
-      font-weight: 600;
-      text-transform: uppercase;
+      font-weight: 400;
+      border-radius: $border-radius;
       @include vertical-align-middle();
       .inscription {
       }
       &:hover {
         opacity: 0.9;
+        color: white;
+      }
+    }
+  }
+  .message-bank {
+    $border-radius: 0.4em;
+    $width: 80%;
+    @include box-inline-block($width);
+    margin: 1em (100%-$width)/2;
+    position: relative;
+    text-align: center;
+    .info {
+      @include box-inline-block(100%);
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.08);
+      border-radius: $border-radius;
+    }
+    .image {
+      position: static;
+      box-shadow: none;
+      background: white;
+      border-radius: $border-radius $border-radius 0 0;
+      padding: 3em 0;
+      img {
+        width: 90%;
+        max-width: 200px;
+      }
+    }
+    .label {
+      @include box-inline-block(100%);
+      color: white;
+      text-transform: uppercase;
+      font-size: 1em;
+      font-weight: 300;
+      margin-bottom: 1em;
+    }
+    .sum {
+      @include box-inline-block(100%);
+      background: $color;
+      border-radius: 0 0 $border-radius $border-radius;
+      padding: 1.5em 0 2em 0;
+    }
+    .profit {
+      @include box-inline-block(auto);
+      font-size: 2.7em;
+      font-weight: 900;
+      padding: 0.4px 0 0 0;
+      text-align: center;
+      color: white;
+    }
+    .value {
+      @include box-inline-block(auto);
+    }
+    .units {
+      @include box-inline-block(auto);
+    }
+    .description {
+      margin-top: 1.5em;
+      text-align: left;
+      font-size: 1em;
+    }
+    .link {
+      text-align: left;
+      margin-top: 1em;
+      a {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: $color;
+        &:hover {
+          text-decoration: none;
+          color: $color;
+          opacity: 0.8;
+        }
       }
     }
   }
