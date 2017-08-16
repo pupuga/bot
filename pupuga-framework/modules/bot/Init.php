@@ -9,7 +9,7 @@ class Init extends Module\AbstractInit
 
     public $valueData = array();
     public $language;
-    public $lang = array('ua');
+    public $lang = array('no');
     public $dataObjects = array();
 
     protected $classes = array(
@@ -62,6 +62,7 @@ class Init extends Module\AbstractInit
 
     public function start($language)
     {
+
         $objectData = GetData::app()
             ->getConfig();
 
@@ -122,22 +123,12 @@ class Init extends Module\AbstractInit
         return $this;
     }
 
-    public function checkPostVar($name) {
-        if (isset($_POST[$name]) && trim($_POST[$name]) != '') {
-            $value = trim($_POST[$name]);
-        } else {
-            $value = '';
-        }        
-        
-        return $value;
-    }
-    
-    
     /**
      * @return $this
      */
     public function setCookies()
     {
+        
         $valueData = array();
 
         if (isset($_COOKIE['pupugaBotValue']) && trim($_COOKIE['pupugaBotValue']) != '') {
@@ -146,10 +137,24 @@ class Init extends Module\AbstractInit
                 $valueData = array();
             }
         }
-        
-        $value = $this->checkPostVar('value');
-        $units = $this->checkPostVar('units');
-        $name = $this->checkPostVar('name');
+
+        if (isset($_POST['value']) && trim($_POST['value']) != '') {
+            $value = trim($_POST['value']);
+        } else {
+            $value = '';
+        }
+
+        if (isset($_POST['units']) && trim($_POST['units']) != '') {
+            $units = trim($_POST['units']);
+        } else {
+            $units = '';
+        }
+
+        if (isset($_POST['name']) && trim($_POST['name']) != '') {
+            $name = trim($_POST['name']);
+        } else {
+            $name = '';
+        }
 
         $indexReplace = false;
         $index = 0;
@@ -191,12 +196,7 @@ class Init extends Module\AbstractInit
      */
     public function getDataObjects()
     {
-        
-        if (defined('Carbon_Fields\VERSION')) {
-            $data = carbon_get_theme_option('content_data_'.$this->language);
-        } else {
-            $data = get_option('_content_data_'.$this->language);
-        };
+        $data = carbon_get_theme_option('content_data_'.$this->language);
         $xml = '<?xml version="1.0" standalone="yes"?><data>' . $data . '</data>';
         $this->dataObjects = new \SimpleXMLElement($xml);
         return $this;

@@ -22,11 +22,11 @@ class Admin
     {
         $container = Container::make('theme_options', __('Simple Bot'))
             ->set_page_parent('plugins.php');
-        
+
         foreach ($this->lang as $language) {
             $container
                 ->add_tab($language, array(
-                    Field::make('textarea', 'botdata_' . $language, 'Data')->help_text('<br> You can use short code - [value] [units]'),
+                    Field::make('textarea', 'botdata_' . $language, 'Data')->help_text('<br> You can use short code - [rate] [value] [units] [years] [refinance] [refinanceBank] [profit] [bank] [name]'),
                     Field::make('text', 'botname_' . $language, 'Name'),
                     Field::make('image', 'botimage_' . $language, 'Image')->set_value_type('url'),
                     Field::make('text', 'botinfo_' . $language, 'Info'),

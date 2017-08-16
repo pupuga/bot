@@ -10,9 +10,11 @@
     
     checkFilters: function (object) {
         var returnFilter = true,
-            editField = object.siblings('[type="text"]');
+            editField = object.siblings('[type="text"], [type="number"]');
+
+        console.log ('editField');
         
-        if (returnFilter && editField.val() === '') {
+        if (editField !== false && editField.val() === '') {
             editField.addClass('warning');
             returnFilter = false;
         }
@@ -114,9 +116,9 @@
         
         jQuery(this.botSelector + ' .answer .number').off('input').on('input', function () {
             jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
-            if (jQuery(this).val() > jQuery(this).data('filter-max')) {
+           /* if (jQuery(this).val() > jQuery(this).data('filter-max')) {
                 jQuery(this).val(jQuery(this).val().replace(/[^.]/, ''));
-            }
+            }*/
         });
         
         jQuery(this.botSelector + ' .answer .button').off('click').on('click', function () {
@@ -124,6 +126,14 @@
                 self.getMessagesClient(jQuery(this));
             }
         });
+
+        jQuery(this.botSelector + ' .answer .text').off('keypress').on('keypress', function (evt) {
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if(keyCode == 13){
+                jQuery(this).parent().find('button').click();
+            }    
+        });
+        
     },
     
     getAnswers: function () {
@@ -143,6 +153,7 @@
                    self.actionAnswer();        
                }
            });
+           
         });
     },
     

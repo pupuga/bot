@@ -102,9 +102,9 @@ abstract class AbstractGetData
 		}
 		
 		$replaceData = array (
-/*            '[and]' => '&',
+            '[and]' => '&',
 			'[value]' => trim($_POST['value']),
-			'[units]' => trim($_POST['units']),*/
+			'[units]' => trim($_POST['units']),
 			'{' => '<',
 			'}' => '>',
 		);
@@ -123,19 +123,56 @@ abstract class AbstractGetData
 			$value = str_replace($search, $replace, $value);
 			$this->dataBlock['message'][$key] = $value;
 		}
-
+        
+        
+		$i = 0;
+		$length = UseContent::app()->indexItem; 
+        UseContent::app()->indexItem = 0;
+        $answers = array();
         foreach ($this->dataBlock['answer'] as $key => $value) {
-            foreach ($this->replaceFunctions as $shortCode => $replaceFunction) {
-                if (strrpos($this->dataBlock['answer'][$key]->inscription, $shortCode) !== false) {
-                    $value->inscription = str_replace($shortCode, ShortCode::app()->$replaceFunction(), $value->inscription);
+
+            if (isset($value->loop) && $value->loop != '') {
+                $inscription = trim($value->inscription);
+
+                if (isset($value->loop) && $value->loop != '') {
+
+                    while ($length >= UseContent::app()->indexItem) {
+                        $inscriptionString = $inscription;
+                        foreach ($this->replaceFunctions as $shortCode => $replaceFunction) {
+                            $inscriptionString = str_replace($shortCode, UseContent::app()->$replaceFunction(), $inscriptionString);
+                        }
+                        $answers[$i]->type = trim($value->type);
+                        $answers[$i]->inscription = trim($inscriptionString);
+                        $answers[$i]->target = str_replace('[target]', UseContent::app()->getTarget(), $value->target);
+                        $answers[$i]->target = trim(str_replace($search, $replace, $answers[$i]->target));
+
+
+                        UseContent::app()->indexItem = UseContent::app()->indexItem + 1;
+                        $i++;
+                    }
+                    
                 }
+                
+                if (UseContent::app()->indexItem >= count(Init::app()->dataObjects->organization)) {
+                    break;
+                }
+
+            } else {
+                foreach ($this->replaceFunctions as $shortCode => $replaceFunction) {
+                    if (strrpos($this->dataBlock['answer'][$key]->inscription, $shortCode) !== false) {
+                        $value->inscription = str_replace($shortCode, ShortCode::app()->$replaceFunction(), $value->inscription);
+                    }
+                }
+                $answers[$i] = $value;
+                $answers[$i]->type = trim($value->type);
+                $answers[$i]->inscription = trim(str_replace($search, $replace, $value->inscription));
+                $answers[$i]->target = str_replace('[target]', UseContent::app()->getTarget(), $value->target);
+                $answers[$i]->target = trim(str_replace($search, $replace, $answers[$i]->target));
+                
+                $i++;
             }
-            $valueNew = str_replace($search, $replace, $value->inscription);
-            $this->dataBlock['answer'][$key]->inscription = $valueNew;
-            $valueNew = str_replace($search, $replace, $value->target);
-            $this->dataBlock['answer'][$key]->target = $valueNew;
         }
-				
+        $this->dataBlock['answer'] = $answers;
 		return $this;
 	}
 

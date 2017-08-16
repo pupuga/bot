@@ -3,6 +3,10 @@
 @import "_Elements";
 @import "_Default";
 
+#bottom-area {
+  display: none !important;
+}
+
 .pupuga-bot {
   @include box-block(100%);
   max-width: 598px;
@@ -133,6 +137,7 @@
         }
       }
       &.message-client {
+        opacity: 0 !important;
         @include el-image-round($width-image, $width-image, 1px, $message-client-image-border-color);
         right: $indent;
         @include media(480px) {
@@ -184,8 +189,8 @@
     background: white;
     border-radius: 0 0 0.7em 0.7em;
     @include media(480px){
-      padding-left: 0;
-      padding-right: 0;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
     }
     .answer {
       @include box-inline-block(100%);
@@ -232,6 +237,7 @@
       font-weight: 600;
       right: 100% - $width + $indent + 5%;
       top: 1.3em;
+      background: white;
     }
     .units {
       color: $color;
